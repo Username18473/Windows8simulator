@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+<title>Windows</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-image: url('Assets/3621379.jpg');
+        background-size: cover;
+    }
+    #taskbar {
+        width: 100vw;
+        height: 50px;
+        background-color: #0076d780;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    #Start-Button {
+        background-color: rgb(13, 174,255);
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        transition: all 0.3s ease;
+    }
+    #Start-Button:hover {
+        background-color: rgb(13, 150, 255);
+        }
+        #Start-screen {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('Assets/PurpleBG.png');
+        background-size: cover;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        transition: all 0.3s ease;
+        }
+        .Tile-Medium {
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 200px;
+        height: 100px;
+        font-size: 12px;
+        }
+        .Tile-Small {
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+        }
+        #Close-tile {
+        background-image: url('Assets/3621379.jpg');
+        background-size: cover;
+        }
+        .icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+             width: 60px;
+           height: 70px;
+           align-items: center;
+        }
+        .icon img{
+           width: 50px;
+           height: 50px;
+        }
+        .icon span {
+            text-shadow: 1px 1px 2px black;
+            font-size: 12px;
+            color: white;
+
+        }
+        .icon:hover {
+            background-color: rgba(255, 255, 255, 0.837);
+            border-color: rgba(241, 241, 241, 0.543);
+            border-radius: 10px;
+        }
+        .Appbutton {
+            height: 50px;
+            width: 70px;
+           align-items: center;
+           border-radius: 5px;
+           margin-left: 2px;
+           position: relative;
+            gap: 2px;
+        }
+        .Appbutton img {
+            width: 45px;
+            height: 45px; 
+        }
+        .Appbutton:hover {
+             background-color: rgba(255, 255, 255, 0.837);
+            border-color: rgba(129, 126, 126, 0.562);
+        }
+        .TaskbarButtons {
+            position: fixed;
+            margin-left: 100px;
+        }
+        #InternetExplorerButton {
+            background-color: rgba(9, 111, 255, 1);
+            transition: background 0.3s;
+        }
+        #InternetExplorerButton:hover {
+            background-color: rgba(9, 25, 255, 1);
+        }
+        #BrowserPopup {
+            position: fixed;
+            display: none;
+            height: 100vh;
+            width: 100vw;
+            background-color: white;
+            z-index: 999;
+        }
+        #BrowserWindow {
+            position: fixed;
+            width: 100vw;
+            height: 80vh;
+            top: 10%;
+            left: 0;
+        }
+        #BrowserControls {
+            height: 50px;
+            width: 100vw;
+            background-color: black;
+            position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        }
+        #Timecontainer {
+            color: white;
+            height: 50px;
+            width: 80px;
+            align-items: center;
+        }
+        #BackButton, #FowardButton, #SearchButton {
+            background-color: black;
+            color: white;
+            border-radius:40px;
+            width: 50px;
+            border-color: gray;
+            height: 50px;
+        }
+            #BackButton:hover, #FowardButton:hover, #SearchButton:hover {
+            background-color: gray;
+            color: lightgray;
+        }
+    #WebAddressBar {
+        height: 48px;
+        font-size: 35px;
+        width: 1000px;
+    }
+    #CloseBrowserButton {
+        width: 40px;
+        height: 40px;
+        color: white;
+        background-color: tomato;
+        transition: background 0.4s;
+    }
+     #CloseBrowserButton:hover {
+        color: white;
+        background-color: red;
+    }
+    #SettingsButton {
+        background-image: url('Assets/Apps/Settings.png');
+        background-size: cover;
+    }
+    #SettingsButton span {
+        position: fixed;
+        bottom: 80px;
+        left: 50px;
+    }
+    .Popup {
+        width: 600px;
+        height: 480px;
+        display: none;
+    }
+    .Popup header {
+        display: flex;
+        justify-content: center;
+        margin-left: 40px;
+        position: relative;
+        background-color: rgb(224, 235, 124);
+        }
+        .Popup .content {
+            width: 460px;
+            height: 600px;
+            background-color: aliceblue;
+        }
+</style>
+</head>
+<body>
+    <div class="icon">
+        <img src="Assets/Apps/RecycleBin.png" alt="Recycle Bin">
+        <span>Recycle Bin</span>
+    </div>
+<div id="taskbar">
+    <div id="Start-Button" onclick="OpenStartMenu()">Start</div>
+    <div class="TaskbarButtons">
+    <div class="Appbutton" onclick="OpenInternetExplorer()">
+        <img src="Assets/Apps/InternetExplorer.png" alt="Internet Explorer">
+    </div>
+    <div class="Appbutton">
+        <img src="Assets/Apps/Files.png" alt="Internet Explorer">
+        </div>
+    </div>
+    <div id="Timecontainer">
+    <span id="Time">03:57</span>
+    <span id="Date">8/12/25</span>
+    </div>
+</div>
+<div id="Start-screen">
+    <h1 style="margin-left: 10px;">Start</h1>
+    <button class="Tile-Medium" id="Close-tile" onclick="OpenStartMenu()">Desktop</button>
+    <button id="SettingsButton" class="Tile-Small" onclick="OpenStartMenu()"><span>Settings</span></button>
+    <button id="InternetExplorerButton" class="Tile-Small" onclick="OpenInternetExplorer()">Internet Explorer</button>
+     <button id="InternetExplorerButton" class="Tile-Small" onclick="OpenPopup('CalculatorPopup')">Internet Explorer</button>
+    </div>
+    <div id="BrowserPopup">
+        <button id="CloseBrowserButton" onclick="OpenInternetExplorer()">X</button>
+        <iframe id="BrowserWindow" src="https://www.google.com/?igu=1"></iframe>
+        <div id="BrowserControls">
+            <button  id="BackButton">⬅️</button>
+            <input id="WebAddressBar" type="text" placeholder="Web Address">
+            <button  id="SearchButton" onclick="Search()">🔎</button>
+            <button id="FowardButton">-></button>
+        </div>
+    </div>
+    <div class="Popup" id="CalculatorPopup">
+        <header>
+            <h2>Calculator</h2>
+            <button onclick="OpenPopup('CalculatorPopup')">X</button>
+        </header>
+        <div class="content">
+
+        </div>
+    </div>
+</body>
+<script>
+    function OpenStartMenu() {
+        const startMenu = document.getElementById('Start-screen');
+        updateTime();
+        if (startMenu.style.display === 'block') {
+            startMenu.style.display = 'none';
+        } else {
+            startMenu.style.display = 'block';
+        }
+    }
+    function OpenPopup(popup) {
+        const Popup = document.getElementById(`${popup}`)
+        updateTime();
+        if(Popup.style.display === 'none') {
+            Popup.style.display = 'block'
+            OpenStartMenu();
+        } else {
+            Popup.style.display = 'none'
+        }
+    }
+    function OpenInternetExplorer() {
+        const Browser = document.getElementById('BrowserPopup')
+         if (Browser.style.display === 'block') {
+        Browser.style.display = 'none'
+        } else {
+            Browser.style.display = 'block';
+        }
+    } 
+    function Search() {
+        const addressBar = document.getElementById('WebAddressBar').value;
+        const browserWindow = document.getElementById('BrowserWindow');
+        if (addressBar) {
+            browserWindow.src = addressBar;
+            
+        }
+    }
+    function updateTime() {
+        const timeElement = document.getElementById('Time');
+        const dateElement = document.getElementById('Date');
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const year = now.getFullYear().toString().slice(-2);
+        timeElement.textContent = `${hours}:${minutes}`;
+        dateElement.textContent = `${month}/${day}/${year}`;
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
+
+</script>
+</html>
